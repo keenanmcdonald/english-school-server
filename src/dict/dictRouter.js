@@ -10,7 +10,10 @@ dictRouter
     .get((req, res) => {
         DictService.search(req.app.get('db'), req.params.search_term)
             .then(entries => {
-                return res.status(200).send(entries)
+                return DictService.getExamples(entries)
+                    .then(entries => {
+                        return res.status(200).send(entries)
+                    })
             })
     })
 
