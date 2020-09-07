@@ -25,7 +25,7 @@ const DictService = {
         })
         .then(res => {
             console.log('example sentences', res)
-            word.exampleData = res
+            word.example_sentences = res.results[0].lexicalEntries[0].sentences
             return word
         })
     },
